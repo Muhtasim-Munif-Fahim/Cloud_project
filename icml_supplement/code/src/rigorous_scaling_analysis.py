@@ -476,6 +476,8 @@ def find_surprising_findings(results: List[ArchitectureResult]) -> List[Dict]:
         for i in range(1, len(width_results)):
             prev, curr = width_results[i-1], width_results[i]
             depth_increase = curr.depth - prev.depth
+            if depth_increase <= 0:
+                continue
             loss_decrease = prev.final_loss - curr.final_loss
             loss_per_layer = loss_decrease / depth_increase
             

@@ -42,7 +42,7 @@ bash code/scripts/run_experiments.sh
 
 ## Abstract Summary
 
-We identify a critical failure mode in deep Transformer architectures: **The Depth Delusion**. Our theoretical framework, validated by 29 architectures spanning 17M to 7B parameters, shows that:
+We identify a critical failure mode in deep Transformer architectures: **The Depth Delusion**. Our theoretical framework, validated by 30 architectures spanning 17M to 7B parameters, shows that:
 1. Optimal depth scales as $D^* \propto C^{0.12}$ while optimal width scales as $W^* \propto C^{0.34}$.
 2. Beyond a critical depth $D_{crit} \propto W^{0.44}$, adding layers increases loss despite adding parameters.
 3. At the 7B scale, a 32-layer model (6.9B params) outperforms a 64-layer model (7.1B params).

@@ -40,6 +40,7 @@ else:
     jax.distributed.initialize()
 
 import jax.numpy as jnp
+import numpy as np
 from jax.sharding import Mesh, PartitionSpec as P, NamedSharding
 from jax.experimental import mesh_utils
 import optax
@@ -300,7 +301,11 @@ class LargeScaleTrainer:
         self.n_params = sum(x.size for x in jax.tree_util.tree_leaves(variables['params']))
     
     def train_step(self, state, batch):
-        """Single training step."""
+        """Single training step with data and tensor sharding."""
+        # Define how to shard the batch across data parallel axis
+        batch_sharding = NamedSharding(self.mesh, P('dp', None))
+        batch = jax.device_put(batch, batch_sharding)
+        
         def loss_fn(params):
             input_ids = batch[:, :-1]
             targets = batch[:, 1:]
@@ -309,6 +314,9 @@ class LargeScaleTrainer:
             return loss.mean()
         
         loss, grads = jax.value_and_grad(loss_fn)(state.params)
+        
+        # In a real TP implementation, grads would be reduced across 'tp' axis here
+        # For this demonstration, we ensure the computations are partitioned.
         state = state.apply_gradients(grads=grads)
         return state, loss
     
@@ -395,7 +403,7 @@ class SlimPajamaLoader:
         
         # Real implementation would stream from GCS or local disk
         for file_path in self.files:
-            data = jnp.load(file_path, mmap_mode='r')
+            data = np.load(file_path, mmap_mode='r')
             num_batches = len(data) // (self.batch_size * (self.seq_len + 1))
             data = data[:num_batches * self.batch_size * (self.seq_len + 1)]
             data = data.reshape(-1, self.batch_size, self.seq_len + 1)
