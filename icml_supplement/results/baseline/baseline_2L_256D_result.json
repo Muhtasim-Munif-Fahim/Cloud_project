@@ -1,0 +1,28 @@
+{
+  "model_name": "baseline_2L_256D",
+  "config": {
+    "n_layers": 2,
+    "d_model": 256,
+    "d_ff": 1024,
+    "n_heads": 4
+  },
+  "n_params": 27438080,
+  "final_loss": 4.332335,
+  "scale": "baseline",
+  "timestamp": "2025-11-20T12:26:58",
+  "platform": {
+    "system": "TPU VM",
+    "accelerator": "v4-32",
+    "library": "jax 0.4.23",
+    "host": "tpu-worker-227"
+  },
+  "train_metrics": {
+    "grad_norm": 0.2468,
+    "learning_rate": 0.0,
+    "epoch": 1.0,
+    "step": 2000
+  },
+  "total_tokens": 524334266,
+  "elapsed_seconds": 3966.0,
+  "training_hours": 1.1
+}

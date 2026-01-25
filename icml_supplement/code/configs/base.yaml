@@ -1,0 +1,47 @@
+# Base experiment configuration
+# Architecture-Conditioned Scaling Laws Study
+
+experiment:
+  name: "architecture_scaling_v1"
+  description: "Systematic study of how architecture affects scaling exponents"
+  output_dir: "results/"
+
+# Model architecture ranges
+architecture_grid:
+  n_layers: [4, 6, 8, 12, 16, 24]
+  d_model: [256, 384, 512, 768, 1024]
+  ff_ratios: [2, 4, 8]  # d_ff = d_model * ff_ratio
+  n_heads_divisor: 64   # n_heads = d_model / divisor
+
+# Training configuration
+training:
+  total_steps: 2000
+  batch_size_per_device: 128
+  max_seq_len: 2048
+  learning_rate: 3e-4
+  warmup_steps: 200
+  weight_decay: 0.1
+  grad_clip: 1.0
+
+# Data
+data:
+  dataset: "slimpajama"
+  subset_size_gb: 30
+  vocab_size: 50257
+  tokenizer: "gpt2"
+
+# TPU configuration
+tpu:
+  vm_name: "icml2026-v4-primary"
+  zone: "us-central2-b"
+  accelerator_type: "v4-32"
+  n_devices: 16  # 4 workers x 4 devices
+
+# Experiment schedule (to maximize TPU utilization)
+schedule:
+  # Train 8 models in parallel (one per TPU worker pair)
+  parallel_experiments: 8
+  # Total target: 1000+ unique architectures
+  target_architectures: 1000
+  # Checkpoint every N steps (for preemption recovery)
+  checkpoint_interval: 500

@@ -1,0 +1,28 @@
+{
+  "model_name": "baseline_12L_512D",
+  "config": {
+    "n_layers": 12,
+    "d_model": 512,
+    "d_ff": 2048,
+    "n_heads": 8
+  },
+  "n_params": 89499648,
+  "final_loss": 3.472503,
+  "scale": "baseline",
+  "timestamp": "2025-11-26T21:38:49",
+  "platform": {
+    "system": "TPU VM",
+    "accelerator": "v4-32",
+    "library": "jax 0.4.23",
+    "host": "tpu-worker-32"
+  },
+  "train_metrics": {
+    "grad_norm": 0.4226,
+    "learning_rate": 0.0,
+    "epoch": 1.0,
+    "step": 2000
+  },
+  "total_tokens": 524393606,
+  "elapsed_seconds": 3906.0,
+  "training_hours": 1.08
+}

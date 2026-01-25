@@ -1,0 +1,31 @@
+{
+  "model_name": "1B_deep",
+  "config": {
+    "n_layers": 48,
+    "d_model": 1280,
+    "d_ff": 5120,
+    "n_heads": 32
+  },
+  "n_params": 1075246080,
+  "final_loss": 2.839173,
+  "total_tokens": 20000101212,
+  "total_steps": 38147,
+  "batch_size_tokens": 524288,
+  "status": "completed",
+  "timestamp": "2025-12-02T10:12:20",
+  "platform": {
+    "system": "TPU VM",
+    "accelerator": "v4-32",
+    "library": "jax 0.4.23",
+    "host": "tpu-worker-112"
+  },
+  "train_metrics": {
+    "grad_norm": 0.391,
+    "learning_rate": 0.0,
+    "epoch": 1.0,
+    "step": 38147
+  },
+  "scale": "1B",
+  "elapsed_seconds": 36712.0,
+  "training_hours": 10.2
+}

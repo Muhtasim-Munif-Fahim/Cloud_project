@@ -1,0 +1,29 @@
+{
+  "model_name": "3B_deep",
+  "config": {
+    "n_layers": 40,
+    "d_model": 2432,
+    "d_ff": 9728,
+    "n_heads": 32
+  },
+  "n_params": 3088844288,
+  "final_loss": 2.518934,
+  "total_tokens": 60000080237,
+  "status": "completed",
+  "timestamp": "2025-12-06T09:38:54",
+  "platform": {
+    "system": "TPU VM",
+    "accelerator": "v4-32",
+    "library": "jax 0.4.23",
+    "host": "tpu-worker-67"
+  },
+  "train_metrics": {
+    "grad_norm": 0.4903,
+    "learning_rate": 0.0,
+    "epoch": 1.0,
+    "step": 57220
+  },
+  "scale": "3B",
+  "elapsed_seconds": 323737.0,
+  "training_hours": 89.93
+}

@@ -1,0 +1,31 @@
+{
+  "model_name": "1B_extreme",
+  "config": {
+    "n_layers": 80,
+    "d_model": 1024,
+    "d_ff": 4096,
+    "n_heads": 32
+  },
+  "n_params": 1111986176,
+  "final_loss": 2.978205,
+  "total_tokens": 20000113789,
+  "total_steps": 38147,
+  "batch_size_tokens": 524288,
+  "status": "completed",
+  "timestamp": "2025-12-04T22:50:30",
+  "platform": {
+    "system": "TPU VM",
+    "accelerator": "v4-32",
+    "library": "jax 0.4.23",
+    "host": "tpu-worker-160"
+  },
+  "train_metrics": {
+    "grad_norm": 0.2101,
+    "learning_rate": 0.0,
+    "epoch": 1.0,
+    "step": 38147
+  },
+  "scale": "1B",
+  "elapsed_seconds": 36289.0,
+  "training_hours": 10.08
+}
